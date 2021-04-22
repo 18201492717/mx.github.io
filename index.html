@@ -18,187 +18,444 @@
     </script>
     <!-- css -->
     <link href="public/images/1.jpg" rel="icon" />
-    <link rel="stylesheet" href="Public/css/swiper.min.css">
+    <link rel="stylesheet" href="public/css/reset.css">
+    <link rel="stylesheet" href="public/css/layer.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.4.4/weui.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script>
+    <script src="public/js/layer.js"></script>
     <style>
         body {
-            background: #F0F1F5;
+            padding: .32rem .27rem;
+            box-sizing: border-box;
         }
 
-        .content {
-            padding-top: 1.44rem;
-            padding-bottom: 1.96rem;
-            background: #F0F1F5;
+        header {
+            width: 100%;
+            margin-bottom: .32rem;
         }
 
-        .content li {
-            margin-top: 0.4rem;
+        .swiper-pagination {
+            width: 1.1467rem;
+            height: 0.56rem;
+            background: #333333;
+            border-radius: 0.28rem;
+            position: absolute;
+            left: 85%;
+            bottom: 0.3733rem;
+            font-size: 0.24rem;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #EBD6AA;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .content img {
+        .swiper-container,
+        .swiper-wrapper,
+        .swiper-slide {
+            width: 100%;
+            height: 100% !important;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            width: 100%;
             display: block;
-            height: 3.2rem;
-            width: 9.2rem;
-            border-radius: 4px 4px 0 0;
-            margin-left: 4%;
         }
 
-        .content p {
-            width: 9.2rem;
-            height: 0.8rem;
-            line-height: 0.8rem;
-            margin-left: 4%;
-            background: #fff;
-            border-radius: 0 0 4px 4px;
-            text-align: center;
-            color: #333333;
-            font-size: 0.3733rem;
-            /*padding: 0 .3rem;*/
+        aside {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: .27rem;
+            width: 100%;
+            height: .85rem;
+            background: #FFFFFF;
+            border-radius: .43rem;
+            padding: 0 .32rem;
+            box-sizing: border-box;
+        }
+
+        aside .trumpet {
+            width: .53rem;
+            height: .53rem;
+            border-radius: 50%;
+        }
+
+        aside .arr {
+            width: .35rem;
+            height: .53rem;
+        }
+
+        aside div {
+            width: 7.63rem;
+            height: .43rem;
+            font-size: .29rem;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #666666;
+        }
+
+        #container_small_tip {
+            background: #ffffff;
+            position: relative;
             overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+            width: 100%;
         }
 
-        .content a {
+        #content_small_tip {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            font-size: .29rem;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #666666;
+        }
+
+        article {
+            margin-bottom: .27rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 1.36rem;
+            background: #FFFFFF;
+            border-radius: .16rem;
+        }
+
+        article>div {
+            position: relative;
+            width: 25%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        article>div::after {
+            content: ' ';
+            width: .03rem;
+            height: .61rem;
+            position: absolute;
+            top: .37rem;
+            background: #e6e6e6;
+            right: 0;
+        }
+
+        article>div:last-of-type::after {
+            display: none;
+        }
+
+        article div p {
+            margin-bottom: .03rem;
+            font-size: .32rem;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
             color: #333333;
-            text-decoration: none;
-            font-size: 0.3733rem;
+            line-height: .45rem;
+        }
+
+        article div span {
+            font-size: .32rem;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #ED4533;
+            line-height: .45rem;
         }
 
         footer {
-            height: 1.7067rem;
             width: 100%;
-            background: #f0f1f5;
-            position: fixed;
-            bottom: 0;
-            padding-left: 4%;
-            z-index: 99;
-        }
-
-        footer .add-btn {
-            display: block;
-            width: 92%;
-            height: 1.1733rem;
-            line-height: 1.1733rem;
-            border-radius: 4px;
-            font-size: 0.48rem;
-            text-align: center;
-            /*text-indent: 3.6533rem;*/
-            /*background: url('https://soupublic.oss-cn-beijing.aliyuncs.com/public/Souread/image/icon-addAd.png') no-repeat 3.12rem 0.38rem #FF8903;
-                background-size: 0.4133rem 0.4133rem;*/
-            background: #FF8903;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .empty {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 66;
-            background: #fff;
-            display: none;
-        }
-
-        .empty img {
-            width: 3.8667rem;
-            height: 4.2667rem;
-            position: absolute;
-            left: 30.67%;
-            top: 3.5733rem;
-        }
-
-        .empty p {
-            font-family: PingFangSC-Regular;
-            font-size: .4rem;
-            line-height: .56rem;
-            color: #AAAAAA;
-            position: absolute;
-            top: 8.32rem;
-            left: 36.13%;
-        }
-
-        /*提示弹窗*/
-        .prompt {
-            color: #fff;
-            font-size: .4533rem;
-            width: 5.3333rem;
-            height: 1.44rem;
-            line-height: 1.44rem;
-            text-align: center;
-            opacity: 0.69;
-            background: #000000;
-            border-radius: 6px;
-            position: fixed;
-            z-index: 99;
-            /*top: 6.4533rem;*/
-            top: 4.4533rem;
-            left: 23.467%;
-            display: none;
-        }
-
-        /*nav切换*/
-        nav {
-            width: 100%;
-            height: 1.1733rem;
             background: #FFFFFF;
-            overflow-x: auto;
-            position: fixed;
-            top: 0;
-            z-index: 99;
-        }
-
-        nav #list {
-            position: absolute;
-            white-space: nowrap;
-            /*width: 86.6667%;*/
-            width: 100vw;
-            height: 1.1733rem;
-            display: inline-block;
-        }
-
-        nav #list a {
-            white-space: nowrap;
-            display: inline-block;
-            padding: 0 .0533rem;
-            color: #666666;
-            text-decoration: none;
-            font-size: .4rem;
-            line-height: 1.1733rem;
-            height: 1.1733rem;
-            margin-left: 14.85%;
+            border-radius: .16rem;
+            padding: .37rem;
+            padding-top: .53rem;
             box-sizing: border-box;
-            font-family: PingFangSC-Regular;
+        }
+
+        footer h3 {
+            margin: 0 auto;
+            margin-bottom: .67rem;
+            width: 6.64rem;
+            height: 1.31rem;
+            background: url(public/images/time.png) no-repeat center center;
+            background-size: 100%;
+            padding-top: .16rem;
+            box-sizing: border-box;
+            font-size: .51rem;
+            font-family: PingFangSC-Semibold, PingFang SC;
+            font-weight: 600;
+            color: #7E1414;
+            line-height: .69rem;
+            text-align: center;
+        }
+
+        footer>p {
+            width: 100%;
+            font-size: .43rem;
+            font-family: PingFangSC-Medium, PingFang SC;
+            font-weight: 500;
+            color: #000000;
+            line-height: .59rem;
+            text-align: center;
+            margin-bottom: .24rem;
+        }
+
+        footer h4 {
+            margin-bottom: .67rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        footer h4 span {
+            font-size: .32rem;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #000000;
+            line-height: .45rem;
+        }
+
+        footer h4 .progress {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 7.39rem;
+            height: 0.5rem;
+            background: #F5F5F5;
+            border-radius: .32rem;
+        }
+
+        .progress p {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            background: #ED4533;
+            border-radius: .32rem;
+        }
+
+        .progress i {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            font-size: .16rem;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .classfy {
+            margin-bottom: .51rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .classfy div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 1.33rem;
+            height: 1.33rem;
+            border-radius: 50%;
+            font-size: .67rem;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .classfy .reduce {
+            background: #999;
+        }
+
+        .classfy .add {
+            background: pink;
+        }
+
+        footer h5 {
+            width: 100%;
+            text-align: center;
+            font-size: .29rem;
             font-weight: normal;
+            color: rgba(168, 168, 168, 1);
         }
 
-        nav #list a:nth-of-type(1) {
-            margin-left: 8.5%;
-        }
-
-        .nav-active {
-            color: #FF8903 !important;
-            background: url(https://soupublic.oss-cn-beijing.aliyuncs.com/public/Souread/image/read-1.png) no-repeat left bottom;
-            background-size: 100% 3px;
-            font-size: 0.4267rem;
+        .hide {
+            display: none;
         }
     </style>
 </head>
 
 <body>
-    
-    你好呀啊啊
+
+    <header class="">
+        <div class="swiper-container">
+            <div class="swiper-pagination"></div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="public/images/1.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="public/images/2.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="public/images/3.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="public/images/4.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="public/images/5.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="public/images/6.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="public/images/7.jpg">
+                </div>
+            </div>
+        </div>
+    </header>
+    <aside>
+        <img class="trumpet" src="public/images/1.jpg" alt="">
+        <div>
+            <div id="container_small_tip">
+                <div id="content_small_tip"></div>
+            </div>
+        </div>
+        <img class="arr" src="public/images/arr.png" alt="">
+    </aside>
+    <article>
+        <div>
+            <p>任务点</p>
+            <span>0.000</span>
+        </div>
+        <div>
+            <p>抢购券</p>
+            <span>0.00</span>
+        </div>
+        <div>
+            <p>福卡</p>
+            <span>0.00</span>
+        </div>
+        <div>
+            <p>消费券</p>
+            <span>0.00</span>
+        </div>
+    </article>
+    <footer>
+        <h3>Now - Forver</h3>
+        <p>好感度</p>
+        <h4>
+            <span>0</span>
+            <div class="progress">
+                <p><i class="progress-num">50%</i></p>
+
+            </div>
+            <span>100%</span>
+        </h4>
+        <div class="classfy">
+            <div class="reduce">
+                -
+            </div>
+            <div class="add">
+                +
+            </div>
+        </div>
+        <h5>
+            *萱萱对本人的好感度达到80%的时候有惊喜哦～
+        </h5>
+    </footer>
 
 
-    <!-- js -->
-    <script src="Public/js/jquery.min.js"></script>
-    <script src="Public/js/swiper.min.js"></script>
-    <!-- <script src="../Public/js/layer.js"></script> -->
-    <script src="Public/js/clipboard.min.js"></script>
     <script>
+        // 轮播
+        var swiper = new Swiper('.swiper-container', {
+            autoplay: true,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+            },
+        });
+        // 跑马灯插件start
+        var content = "此类商品此类商品此类商品上线，供应链源自于京东，怡亚";
+        $("#content_small_tip").html(content);
+        roll(2, "#container_small_tip", "#content_small_tip");
+        function roll(speed = 1, fatherselect, select) {
+            if ($(fatherselect) == null) return;
+            var $container = $(fatherselect);//#container_small_tip
+            var $content = $(select);//#content_small_tip
+            var init_left = $container.width();
+            $content.css({ left: parseInt(init_left) + "px" });
+            var This = this;
+            var time = setInterval(function () { move($container, $content, speed); }, 50); 				  //setInterval会改变this指向，即使加了This=this，也要用匿名函数封装
 
+            $container.bind("mouseover", function () {
+                clearInterval(time);
+            });
+            $container.bind("mouseout", function () {
+                time = setInterval(function () { move($container, $content, speed); }, 50);
+            });
+            // setTimeout(function () { $("#container").slideUp(); }, 30000);  //毫秒单位，显示30s后消失
+            return this;
+        };
+        function move($container, $content, speed) {
+            var container_width = $container.width();
+            var content_width = $content.width();
+            if (parseInt($content.css("left")) + content_width > 0) {
+                $content.css({ left: parseInt($content.css("left")) - speed + "px" });
+                // $content.css({ color: "#02A0E9" })//改变字体颜色
+            }
+            else {
+                $content.css({ left: parseInt(container_width) + "px" });
+                // $content.css({ color: "#02A0E9" })//改变字体颜色
+            }
+        }
+        //跑马灯插件end
+        $('.add').click(function () {
+            let width = $('.progress p').width()
+            let width_parent = $('.progress').width()
+            let scale = (width / width_parent * 100).toFixed(0) * 1
+            scale = scale + 10
+            if (scale > 90) {
+                $('.progress p').css('width', width_parent)
+                $('.progress .progress-num').hide().text('100%')
+            } else {
+                $('.progress p').css('width', scale + '%')
+                $('.progress .progress-num').show().text(scale + '%')
+            }
+        })
+        $('.reduce').click(function () {
+            let width = $('.progress p').width()
+            let width_parent = $('.progress').width()
+            let scale = (width / width_parent * 100) * 1
 
+            if (scale < 49.7) {
+                layer.msg('多么希望你没有看到这行字呢')
+                $('header,aside,article,footer').hide()
+            } else {
+                if (scale < 60) {
+                    scale = (scale - 0.1).toFixed(1)
+                    $('.progress p').css('width', scale + '%')
+                    $('.progress .progress-num').show().text(scale + '%')
+                } else {
+                    scale = (scale - 1).toFixed(0)
+                    $('.progress p').css('width', scale + '%')
+                    $('.progress .progress-num').show().text(scale + '%')
+                }
+            }
+        })
     </script>
 </body>
 
