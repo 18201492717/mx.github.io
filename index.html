@@ -68,6 +68,7 @@
         }
 
         aside {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -78,6 +79,16 @@
             border-radius: .43rem;
             padding: 0 .32rem;
             box-sizing: border-box;
+        }
+
+        aside h6 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0);
+            z-index: 999;
         }
 
         aside .trumpet {
@@ -331,22 +342,23 @@
         </div>
     </header>
     <aside>
+        <h6></h6>
         <img class="trumpet" src="public/images/1.jpg" alt="">
         <div>
             <div id="container_small_tip">
                 <div id="content_small_tip"></div>
             </div>
         </div>
-        <img class="arr" src="public/images/arr.png" alt="">
+        <!-- <img class="arr" src="public/images/arr.png" alt=""> -->
     </aside>
     <article>
         <div>
             <p class="toMusic">听音乐</p>
-            <span>0首</span>
+            <span>***首</span>
         </div>
         <div class="toStory">
             <p>听故事</p>
-            <span>0首</span>
+            <span>***首</span>
         </div>
         <div class="toVideo">
             <p>看视频</p>
@@ -373,7 +385,7 @@
             </div>
         </div>
         <h5>
-            *可以拜托你点点加号嘛～
+            *萱萱姑娘，对不起，原谅我好吗
         </h5>
     </footer>
 
@@ -473,11 +485,11 @@
         })
         // 听音乐
         $('.toMusic').click(function () {
-            layer.msg('VIP客户专属哦～')
+            layer.msg('VIP专属，没敢开通呢～')
         })
         // 听故事
         $('.toStory').click(function () {
-            layer.msg('VIP客户专属哦～')
+            layer.msg('VIP专属，没敢开通呢～')
         })
         // 看视频
         $('.toVideo').click(function () {
