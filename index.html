@@ -19,12 +19,12 @@
     <!-- css -->
     <link href="public/images/1.jpg" rel="icon" />
     <link rel="stylesheet" href="public/css/reset.css">
-    <link rel="stylesheet" href="public/css/layer.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.4.4/weui.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script>
-    <script src="public/js/layer.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/layer/3.3.0/layer.js"></script>
+    <script src="public/js/love.js"></script>
     <style>
         body {
             padding: .32rem .27rem;
@@ -133,7 +133,7 @@
 
         article>div {
             position: relative;
-            width: 25%;
+            width: 33.3333%;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -244,10 +244,13 @@
         }
 
         .progress i {
+            height: 100%;
+            display: flex;
+            align-items: center;
             position: absolute;
             left: 50%;
             top: 0;
-            font-size: .16rem;
+            font-size: .32rem;
             font-family: PingFangSC-Regular, PingFang SC;
             font-weight: 400;
             color: #fff;
@@ -338,20 +341,16 @@
     </aside>
     <article>
         <div>
-            <p>任务点</p>
-            <span>0.000</span>
+            <p class="toMusic">听音乐</p>
+            <span>0首</span>
         </div>
-        <div>
-            <p>抢购券</p>
-            <span>0.00</span>
+        <div class="toStory">
+            <p>听故事</p>
+            <span>0首</span>
         </div>
-        <div>
-            <p>福卡</p>
-            <span>0.00</span>
-        </div>
-        <div>
-            <p>消费券</p>
-            <span>0.00</span>
+        <div class="toVideo">
+            <p>看视频</p>
+            <span>1个</span>
         </div>
     </article>
     <footer>
@@ -374,7 +373,7 @@
             </div>
         </div>
         <h5>
-            *萱萱对本人的好感度达到80%的时候有惊喜哦～
+            *可以拜托你点点加号嘛～
         </h5>
     </footer>
 
@@ -389,7 +388,7 @@
             },
         });
         // 跑马灯插件start
-        var content = "此类商品此类商品此类商品上线，供应链源自于京东，怡亚";
+        var content = lover;
         $("#content_small_tip").html(content);
         roll(2, "#container_small_tip", "#content_small_tip");
         function roll(speed = 1, fatherselect, select) {
@@ -423,6 +422,8 @@
             }
         }
         //跑马灯插件end
+
+        // 加号
         $('.add').click(function () {
             let width = $('.progress p').width()
             let width_parent = $('.progress').width()
@@ -432,18 +433,32 @@
                 $('.progress p').css('width', width_parent)
                 $('.progress .progress-num').hide().text('100%')
             } else {
-                $('.progress p').css('width', scale + '%')
-                $('.progress .progress-num').show().text(scale + '%')
+                if (scale > 60) {
+                    $('header').show()
+                    $('aside,article').css('display', 'flex')
+                    $('.progress p').css('width', scale + '%')
+                    $('.progress .progress-num').show().text(scale + '%')
+                    swiper = new Swiper('.swiper-container', {
+                        autoplay: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            type: 'fraction',
+                        },
+                    });
+                } else {
+                    $('.progress p').css('width', scale + '%')
+                    $('.progress .progress-num').show().text(scale + '%')
+                }
             }
         })
+        //  减号
         $('.reduce').click(function () {
             let width = $('.progress p').width()
             let width_parent = $('.progress').width()
             let scale = (width / width_parent * 100) * 1
-
-            if (scale < 49.7) {
+            if (scale < 30) {
                 layer.msg('多么希望你没有看到这行字呢')
-                $('header,aside,article,footer').hide()
+                $('header,aside,article').hide()
             } else {
                 if (scale < 60) {
                     scale = (scale - 0.1).toFixed(1)
@@ -455,6 +470,18 @@
                     $('.progress .progress-num').show().text(scale + '%')
                 }
             }
+        })
+        // 听音乐
+        $('.toMusic').click(function () {
+            layer.msg('VIP客户专属哦～')
+        })
+        // 听故事
+        $('.toStory').click(function () {
+            layer.msg('VIP客户专属哦～')
+        })
+        // 看视频
+        $('.toVideo').click(function () {
+            window.location.href = 'html/video.html'
         })
     </script>
 </body>
