@@ -24,7 +24,7 @@
         defaultArtist: undefined,
         defaultTrack: 0,
 
-        autoPlay: false,
+        autoPlay: true,
 
         debug: false
       };
@@ -52,8 +52,8 @@
     this.currentElapsedTime = undefined;
 
     this.timer              = undefined;
-
     this.init();
+    this.play()
   }
 
   Plugin.prototype = {
@@ -68,14 +68,13 @@
       self.updateTotalTime();
       self.events();
       self.debug();
-      self.domAudio.volume = 0.05
+      self.domAudio.volume = 1
     },
 
     play: function()
     {
       var self        = this,
           playButton  = self.$domControls.find("#btn-play");
-      console.log(self.domAudio)
       self.domAudio.play();
 
       if(self.currentState === "play") return;
@@ -167,7 +166,7 @@
       self.currentTrack  = index;
       self.domAudio.src  = self.settings.playlist[index].file;
 
-      if(self.currentState === "play" || self.settings.autoPlay) self.play();
+      if(self.currentState === "play" || self.settings.autoPlay == "true") self.play();
 
       self.highlightTrack();
 
