@@ -97,6 +97,24 @@
             border-radius: 50%;
         }
 
+        @-webkit-keyframes rotation {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        aside .trumpet {
+            -webkit-transform: rotate (360deg);
+            animation: rotation 10s linear infinite;
+            -moz-animation: rotation 10s linear infinite;
+            -webkit-animation: rotation 10s linear infinite;
+            -o-animation: rotation 10s linear infinite;
+        }
+
         aside .arr {
             width: .35rem;
             height: .53rem;
@@ -308,11 +326,16 @@
         .hide {
             display: none;
         }
+
+        .audio-box {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
-
     <header class="">
         <div class="swiper-container">
             <div class="swiper-pagination"></div>
@@ -343,7 +366,7 @@
     </header>
     <aside>
         <h6></h6>
-        <img class="trumpet" src="public/images/1.jpg" alt="">
+        <img id="img" class="trumpet" src="public/images/1.jpg" alt="">
         <div>
             <div id="container_small_tip">
                 <div id="content_small_tip"></div>
@@ -351,10 +374,17 @@
         </div>
         <!-- <img class="arr" src="public/images/arr.png" alt=""> -->
     </aside>
+    <div class="audio-box">
+        <audio id="audio" autoplay="autoplay" controls>
+            <source src="public/audio/出现又离开.mp3" type="audio/ogg" />
+            <source src="public/audio/出现又离开.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
+    </div>
     <article>
         <div>
             <p class="toMusic">听音乐</p>
-            <span>***首</span>
+            <span>3首</span>
         </div>
         <div class="toStory">
             <p>听故事</p>
@@ -385,12 +415,13 @@
             </div>
         </div>
         <h5>
-            *萱萱姑娘，对不起，原谅我好吗
+            *Be grateful for everything, be brave to be yourself and time will tell you why.
         </h5>
     </footer>
 
 
     <script>
+        document.getElementById("audio").play()
         // 轮播
         var swiper = new Swiper('.swiper-container', {
             autoplay: true,
@@ -485,11 +516,11 @@
         })
         // 听音乐
         $('.toMusic').click(function () {
-            layer.msg('VIP专属，没敢开通呢～')
+            window.location.href = 'html/audio/index.html'
         })
         // 听故事
         $('.toStory').click(function () {
-            layer.msg('VIP专属，没敢开通呢～')
+            layer.msg('VIP专属哦～')
         })
         // 看视频
         $('.toVideo').click(function () {
