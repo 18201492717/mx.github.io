@@ -433,7 +433,7 @@
         // 跑马灯插件start
         var content = lover;
         $("#content_small_tip").html(content);
-        roll(2, "#container_small_tip", "#content_small_tip");
+        roll(1, "#container_small_tip", "#content_small_tip");
         function roll(speed = 1, fatherselect, select) {
             if ($(fatherselect) == null) return;
             var $container = $(fatherselect);//#container_small_tip
@@ -525,6 +525,17 @@
         // 看视频
         $('.toVideo').click(function () {
             window.location.href = 'html/video.html'
+        })
+        $('aside h6').click(function(){
+            if($('.trumpet').attr('src')=='public/images/1.jpg'){
+                layer.msg('暂停音乐')
+                $('.trumpet').attr('src','public/images/2.jpg')
+                document.getElementById("audio").pause()
+            }else{
+                layer.msg('播放音乐')
+                $('.trumpet').attr('src','public/images/1.jpg')
+                document.getElementById("audio").play()
+            }
         })
     </script>
 </body>
