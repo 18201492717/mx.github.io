@@ -27,11 +27,41 @@
     <script src="public/js/love.js"></script>
     <style>
         body {
+            min-height: 100vh;
+            box-sizing: border-box;
+            margin: 0;
+            padding-top: calc(50vh - 6em);
+            font: 150%/1.6 Baskerville, Palatino, serif;
+            background: url('public/images/bg1.jpg') no-repeat top center;
+            background-size: cover;
+        }
+
+        body {
             padding: .32rem .27rem;
             box-sizing: border-box;
         }
-
+        .body{
+            position: relative;
+            margin: 0 auto;
+            background: hsla(0,0%,100%,.25) border-box;
+            overflow: hidden;
+            border-radius: .3em;
+            box-shadow: 0 0 0 1px hsla(0,0%,100%,.3) inset,
+                        0 .5em 1em rgba(0, 0, 0, 0.6);
+            text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
+        }
+        /*使用滤镜模糊边缘*/
+        .body::before{
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            margin: -30px;
+            z-index: -1;
+            -webkit-filter: blur(20px);
+            filter: blur(20px);
+        }
         header {
+            /* display: none; */
             width: 100%;
             margin-bottom: .32rem;
         }
@@ -203,7 +233,7 @@
 
         footer {
             width: 100%;
-            background: #FFFFFF;
+            /* background: #FFFFFF; */
             border-radius: .16rem;
             padding: .37rem;
             padding-top: .53rem;
@@ -225,6 +255,7 @@
             color: #7E1414;
             line-height: .69rem;
             text-align: center;
+            text-decoration: line-through;
         }
 
         footer>p {
@@ -336,6 +367,7 @@
 </head>
 
 <body>
+    <div class="body">
     <header class="">
         <div class="swiper-container">
             <div class="swiper-pagination"></div>
@@ -418,7 +450,7 @@
             *Be grateful for everything, be brave to be yourself and time will tell you why.
         </h5>
     </footer>
-
+</div>
 
     <script>
         document.getElementById("audio").play()
@@ -526,14 +558,14 @@
         $('.toVideo').click(function () {
             window.location.href = 'html/video.html'
         })
-        $('aside h6').click(function(){
-            if($('.trumpet').attr('src')=='public/images/1.jpg'){
+        $('aside h6').click(function () {
+            if ($('.trumpet').attr('src') == 'public/images/1.jpg') {
                 layer.msg('暂停音乐')
-                $('.trumpet').attr('src','public/images/2.jpg')
+                $('.trumpet').attr('src', 'public/images/2.jpg')
                 document.getElementById("audio").pause()
-            }else{
+            } else {
                 layer.msg('播放音乐')
-                $('.trumpet').attr('src','public/images/1.jpg')
+                $('.trumpet').attr('src', 'public/images/1.jpg')
                 document.getElementById("audio").play()
             }
         })
