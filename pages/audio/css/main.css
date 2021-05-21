@@ -159,6 +159,8 @@ html {
   background: #fff;
 }
 .jAudio--player .jAudio--playlist {
+  height: 27rem;
+  overflow: scroll;
   background: #fff;
 }
 .jAudio--player .jAudio--playlist .jAudio--playlist-item {
