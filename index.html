@@ -14,7 +14,68 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <script type="text/javascript">
-        !function (N, M) { function L() { var a = I.getBoundingClientRect().width; a / F > 540 && (a = 540 * F); var d = a / 10; I.style.fontSize = d + "px", D.rem = N.rem = d } var K, J = N.document, I = J.documentElement, H = J.querySelector('meta[name="viewport"]'), G = J.querySelector('meta[name="flexible"]'), F = 0, E = 0, D = M.flexible || (M.flexible = {}); if (H) { console.warn("将根据已有的meta标签来设置缩放比例"); var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/); C && (E = parseFloat(C[1]), F = parseInt(1 / E)) } else { if (G) { var B = G.getAttribute("content"); if (B) { var A = B.match(/initial\-dpr=([\d\.]+)/), z = B.match(/maximum\-dpr=([\d\.]+)/); A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E = parseFloat((1 / F).toFixed(2))) } } } if (!F && !E) { var y = N.navigator.userAgent, x = (!!y.match(/android/gi), !!y.match(/iphone/gi)), w = x && !!y.match(/OS 9_3/), v = N.devicePixelRatio; F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F } if (I.setAttribute("data-dpr", F), !H) { if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content", "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"), I.firstElementChild) { I.firstElementChild.appendChild(H) } else { var u = J.createElement("div"); u.appendChild(H), J.write(u.innerHTML) } } N.addEventListener("resize", function () { clearTimeout(K), K = setTimeout(L, 300) }, !1), N.addEventListener("pageshow", function (b) { b.persisted && (clearTimeout(K), K = setTimeout(L, 300)) }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener("DOMContentLoaded", function () { J.body.style.fontSize = 12 * F + "px" }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) { var c = parseFloat(d) * this.rem; return "string" == typeof d && d.match(/rem$/) && (c += "px"), c }, D.px2rem = function (d) { var c = parseFloat(d) / this.rem; return "string" == typeof d && d.match(/px$/) && (c += "rem"), c } }(window, window.lib || (window.lib = {}));
+        ! function (N, M) {
+            function L() {
+                var a = I.getBoundingClientRect().width;
+                a / F > 540 && (a = 540 * F);
+                var d = a / 10;
+                I.style.fontSize = d + "px", D.rem = N.rem = d
+            }
+            var K, J = N.document,
+                I = J.documentElement,
+                H = J.querySelector('meta[name="viewport"]'),
+                G = J.querySelector('meta[name="flexible"]'),
+                F = 0,
+                E = 0,
+                D = M.flexible || (M.flexible = {});
+            if (H) {
+                console.warn("将根据已有的meta标签来设置缩放比例");
+                var C = H.getAttribute("content").match(/initial\-scale=([\d\.]+)/);
+                C && (E = parseFloat(C[1]), F = parseInt(1 / E))
+            } else {
+                if (G) {
+                    var B = G.getAttribute("content");
+                    if (B) {
+                        var A = B.match(/initial\-dpr=([\d\.]+)/),
+                            z = B.match(/maximum\-dpr=([\d\.]+)/);
+                        A && (F = parseFloat(A[1]), E = parseFloat((1 / F).toFixed(2))), z && (F = parseFloat(z[1]), E =
+                            parseFloat((1 / F).toFixed(2)))
+                    }
+                }
+            }
+            if (!F && !E) {
+                var y = N.navigator.userAgent,
+                    x = (!!y.match(/android/gi), !!y.match(/iphone/gi)),
+                    w = x && !!y.match(/OS 9_3/),
+                    v = N.devicePixelRatio;
+                F = x && !w ? v >= 3 && (!F || F >= 3) ? 3 : v >= 2 && (!F || F >= 2) ? 2 : 1 : 1, E = 1 / F
+            }
+            if (I.setAttribute("data-dpr", F), !H) {
+                if (H = J.createElement("meta"), H.setAttribute("name", "viewport"), H.setAttribute("content",
+                        "initial-scale=" + E + ", maximum-scale=" + E + ", minimum-scale=" + E + ", user-scalable=no"),
+                    I.firstElementChild) {
+                    I.firstElementChild.appendChild(H)
+                } else {
+                    var u = J.createElement("div");
+                    u.appendChild(H), J.write(u.innerHTML)
+                }
+            }
+            N.addEventListener("resize", function () {
+                clearTimeout(K), K = setTimeout(L, 300)
+            }, !1), N.addEventListener("pageshow", function (b) {
+                b.persisted && (clearTimeout(K), K = setTimeout(L, 300))
+            }, !1), "complete" === J.readyState ? J.body.style.fontSize = 12 * F + "px" : J.addEventListener(
+                "DOMContentLoaded",
+                function () {
+                    J.body.style.fontSize = 12 * F + "px"
+                }, !1), L(), D.dpr = N.dpr = F, D.refreshRem = L, D.rem2px = function (d) {
+                var c = parseFloat(d) * this.rem;
+                return "string" == typeof d && d.match(/rem$/) && (c += "px"), c
+            }, D.px2rem = function (d) {
+                var c = parseFloat(d) / this.rem;
+                return "string" == typeof d && d.match(/px$/) && (c += "rem"), c
+            }
+        }(window, window.lib || (window.lib = {}));
     </script>
     <!-- css -->
     <link href="public/images/1.jpg" rel="icon" />
@@ -40,26 +101,32 @@
             padding: .32rem .27rem;
             box-sizing: border-box;
         }
-        .body{
+
+        .body {
             position: relative;
             margin: 0 auto;
-            background: hsla(0,0%,100%,.25) border-box;
+            background: hsla(0, 0%, 100%, .25) border-box;
             overflow: hidden;
             border-radius: .3em;
-            box-shadow: 0 0 0 1px hsla(0,0%,100%,.3) inset,
-                        0 .5em 1em rgba(0, 0, 0, 0.6);
-            text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
+            box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .3) inset,
+                0 .5em 1em rgba(0, 0, 0, 0.6);
+            text-shadow: 0 1px 1px hsla(0, 0%, 100%, .3);
         }
+
         /*使用滤镜模糊边缘*/
-        .body::before{
+        .body::before {
             content: '';
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             margin: -30px;
             z-index: -1;
             -webkit-filter: blur(20px);
             filter: blur(20px);
         }
+
         header {
             /* display: none; */
             width: 100%;
@@ -190,7 +257,7 @@
             border-radius: .16rem;
         }
 
-        article>div {
+        article>div,article>a {
             position: relative;
             width: 33.3333%;
             height: 100%;
@@ -200,7 +267,7 @@
             justify-content: center;
         }
 
-        article>div::after {
+        article>div::after,article>a::after {
             content: ' ';
             width: .03rem;
             height: .61rem;
@@ -214,7 +281,7 @@
             display: none;
         }
 
-        article div p {
+        article div p,article a p {
             margin-bottom: .03rem;
             font-size: .32rem;
             font-family: PingFangSC-Medium, PingFang SC;
@@ -223,7 +290,7 @@
             line-height: .45rem;
         }
 
-        article div span {
+        article div span,article a span {
             font-size: .32rem;
             font-family: PingFangSC-Medium, PingFang SC;
             font-weight: 500;
@@ -255,7 +322,7 @@
             color: #7E1414;
             line-height: .69rem;
             text-align: center;
-            text-decoration: line-through;
+            /* text-decoration: line-through; */
         }
 
         footer>p {
@@ -368,89 +435,89 @@
 
 <body>
     <div class="body">
-    <header class="">
-        <div class="swiper-container">
-            <div class="swiper-pagination"></div>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="public/images/1.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="public/images/2.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="public/images/3.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="public/images/4.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="public/images/5.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="public/images/6.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="public/images/7.jpg">
+        <header class="">
+            <div class="swiper-container">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="public/images/1.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="public/images/2.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="public/images/3.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="public/images/4.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="public/images/5.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="public/images/6.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="public/images/7.jpg">
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <aside>
-        <h6></h6>
-        <img id="img" class="trumpet" src="public/images/1.jpg" alt="">
-        <div>
-            <div id="container_small_tip">
-                <div id="content_small_tip"></div>
+        </header>
+        <aside>
+            <h6></h6>
+            <img id="img" class="trumpet" src="public/images/1.jpg" alt="">
+            <div>
+                <div id="container_small_tip">
+                    <div id="content_small_tip"></div>
+                </div>
             </div>
+            <!-- <img class="arr" src="public/images/arr.png" alt=""> -->
+        </aside>
+        <div class="audio-box">
+            <audio id="audio" autoplay="autoplay" loop="loop">
+                <source src="pages/audio/tracks/K-391-Summertime.mp3" type="audio/ogg" />
+                <source src="pages/audio/tracks/K-391-Summertime.mp3" type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
         </div>
-        <!-- <img class="arr" src="public/images/arr.png" alt=""> -->
-    </aside>
-    <div class="audio-box">
-        <audio id="audio" autoplay="autoplay" loop="loop">
-            <source src="public/audio/出现又离开.mp3" type="audio/ogg" />
-            <source src="public/audio/出现又离开.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-    <article>
-        <div>
-            <p class="toMusic">听音乐</p>
-            <span>5首</span>
-        </div>
-        <div class="toStory">
-            <p>听故事</p>
-            <span>***首</span>
-        </div>
-        <div class="toVideo">
-            <p>看视频</p>
-            <span>1个</span>
-        </div>
-    </article>
-    <footer>
-        <h3>11.7 - 4.22</h3>
-        <p>客户满意度</p>
-        <h4>
-            <span>0</span>
-            <div class="progress">
-                <p><i class="progress-num">50%</i></p>
+        <article>
+            <div>
+                <p class="toMusic">听音乐</p>
+                <span>7首</span>
+            </div>
+            <a href="javascript:void(0)" class="toStory">
+                <p>听故事</p>
+                <span>∞首</span>
+            </a>
+            <div class="toVideo">
+                <p>看视频</p>
+                <span>1个</span>
+            </div>
+        </article>
+        <footer>
+            <h3>2020-11-07</h3>
+            <p>亲密度呦</p>
+            <h4>
+                <span>0</span>
+                <div class="progress">
+                    <p><i class="progress-num">50%</i></p>
 
+                </div>
+                <span>100%</span>
+            </h4>
+            <div class="classfy">
+                <div class="reduce">
+                    -
+                </div>
+                <div class="add">
+                    +
+                </div>
             </div>
-            <span>100%</span>
-        </h4>
-        <div class="classfy">
-            <div class="reduce">
-                -
-            </div>
-            <div class="add">
-                +
-            </div>
-        </div>
-        <h5>
-            *Be grateful for everything, be brave to be yourself and time will tell you why.
-        </h5>
-    </footer>
-</div>
+            <h5>
+                *Be grateful for everything, be brave to be yourself and time will tell you why.
+            </h5>
+        </footer>
+    </div>
 
     <script>
         document.getElementById("audio").play()
@@ -466,33 +533,44 @@
         var content = lover;
         $("#content_small_tip").html(content);
         roll(1, "#container_small_tip", "#content_small_tip");
+
         function roll(speed = 1, fatherselect, select) {
             if ($(fatherselect) == null) return;
-            var $container = $(fatherselect);//#container_small_tip
-            var $content = $(select);//#content_small_tip
+            var $container = $(fatherselect); //#container_small_tip
+            var $content = $(select); //#content_small_tip
             var init_left = $container.width();
-            $content.css({ left: parseInt(init_left) + "px" });
+            $content.css({
+                left: parseInt(init_left) + "px"
+            });
             var This = this;
-            var time = setInterval(function () { move($container, $content, speed); }, 50); 				  //setInterval会改变this指向，即使加了This=this，也要用匿名函数封装
+            var time = setInterval(function () {
+                move($container, $content, speed);
+            }, 50); //setInterval会改变this指向，即使加了This=this，也要用匿名函数封装
 
             $container.bind("mouseover", function () {
                 clearInterval(time);
             });
             $container.bind("mouseout", function () {
-                time = setInterval(function () { move($container, $content, speed); }, 50);
+                time = setInterval(function () {
+                    move($container, $content, speed);
+                }, 50);
             });
             // setTimeout(function () { $("#container").slideUp(); }, 30000);  //毫秒单位，显示30s后消失
             return this;
         };
+
         function move($container, $content, speed) {
             var container_width = $container.width();
             var content_width = $content.width();
             if (parseInt($content.css("left")) + content_width > 0) {
-                $content.css({ left: parseInt($content.css("left")) - speed + "px" });
+                $content.css({
+                    left: parseInt($content.css("left")) - speed + "px"
+                });
                 // $content.css({ color: "#02A0E9" })//改变字体颜色
-            }
-            else {
-                $content.css({ left: parseInt(container_width) + "px" });
+            } else {
+                $content.css({
+                    left: parseInt(container_width) + "px"
+                });
                 // $content.css({ color: "#02A0E9" })//改变字体颜色
             }
         }
@@ -509,7 +587,7 @@
                 $('.progress .progress-num').hide().text('100%')
             } else {
                 if (scale > 60) {
-                    $('header').show()
+                    // $('header').show()
                     $('aside,article').css('display', 'flex')
                     $('.progress p').css('width', scale + '%')
                     $('.progress .progress-num').show().text(scale + '%')
@@ -520,6 +598,9 @@
                             type: 'fraction',
                         },
                     });
+                    if (scale >= 80) {
+                        $('.toStory').attr('href', 'tel:18201492717')
+                    }
                 } else {
                     $('.progress p').css('width', scale + '%')
                     $('.progress .progress-num').show().text(scale + '%')
@@ -540,6 +621,9 @@
                     $('.progress p').css('width', scale + '%')
                     $('.progress .progress-num').show().text(scale + '%')
                 } else {
+                    if (scale < 80) {
+                        $('.toStory').attr('href', 'javascript:void(0)')
+                    }
                     scale = (scale - 1).toFixed(0)
                     $('.progress p').css('width', scale + '%')
                     $('.progress .progress-num').show().text(scale + '%')
@@ -548,15 +632,20 @@
         })
         // 听音乐
         $('.toMusic').click(function () {
-            window.location.href = 'html/audio/index.html'
+            window.location.href = 'pages/audio/index.html'
         })
         // 听故事
         $('.toStory').click(function () {
-            layer.msg('VIP专属哦～')
+            let width = $('.progress p').width()
+            let width_parent = $('.progress').width()
+            let scale = (width / width_parent * 100) * 1
+            if (scale <= 79) {
+                layer.msg('点点亲密度嘛～')
+            }
         })
         // 看视频
         $('.toVideo').click(function () {
-            window.location.href = 'html/video.html'
+            window.location.href = 'pages/video.html'
         })
         $('aside h6').click(function () {
             if ($('.trumpet').attr('src') == 'public/images/1.jpg') {
